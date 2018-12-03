@@ -1,0 +1,28 @@
+.title{
+    color:rgba(207,172,120)
+}
+.key{
+    background-color: rgb(211, 162, 102);
+    border-radius:3px 0 0 3px;
+    border-width: 3px;
+    color:white;
+    font-size: 60%;
+    margin-left: 10%;
+    padding: 1px
+}
+.value{
+    border-style: solid;
+    border-color: rgb(211, 162, 102);
+    border-radius: 0 3px 3px 0;
+    border-width: 1px;
+    font-size: 60%;
+    color:rgb(211, 162, 102);
+    padding: 0
+}
+#SegmentedControl{
+    color:rgb(211, 162, 102);
+    background-color: bisque
+}
+#addbottom{
+    margin-bottom: 30%
+}

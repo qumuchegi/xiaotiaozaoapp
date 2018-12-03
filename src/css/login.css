@@ -1,0 +1,21 @@
+h1{
+    color:rgba(207,172,120);
+    text-align: center
+}
+#input{
+    margin-top: 20%;
+}
+#input .key2{
+    color: rgba(207,172,120)
+}
+#buttonDiv{
+    margin-top: 30%
+}
+#buttonDiv .button{
+    width: 60%;
+    margin-left: 20%;
+    background-color:rgba(207,172,120);
+    color:white;
+    border-color: aliceblue
+
+}
