@@ -2,7 +2,7 @@ import axios from 'axios'
 import qs from 'querystring'
 
 //let url = "http://localhost:3001" //http://chegi.xyz
-let url = "http://chegi.xyz"
+let url = "http://chegi.xyz:8080"
 export default {
     async get(route='/', data={}){
         let params = qs.stringify(data)
