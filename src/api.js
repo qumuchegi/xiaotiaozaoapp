@@ -1,8 +1,8 @@
 import axios from 'axios'
 import qs from 'querystring'
 
-//let url = "http://localhost:3001" //http://chegi.xyz
-let url = "http://chegi.xyz:8080"
+//let url = "http://localhost:3001" //本地开发是用这一句，对应服务器监听端口改为3001，同时注视掉下一句，
+let url = "http://chegi.xyz:8080"//因为80已经被nginx占用,
 export default {
     async get(route='/', data={}){
         let params = qs.stringify(data)
