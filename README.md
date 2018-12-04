@@ -25,12 +25,12 @@
      step1: git clone https://github.com/qumuchegi/xiaotiaozaoapp.git 
      step2: npm install
      step3: 
-         ###取消这一行的注释 //let url = "http://localhost:3001" //本地开发是用这一句，对应服务器监听端口改为3001，同时注视掉下一句，
-         ###注释掉这一行 let url = "http://chegi.xyz:8080"//因为80已经被nginx占用   
+         ### 取消这一行的注释 //let url = "http://localhost:3001" //本地开发是用这一句，对应服务器监听端口改为3001，同时注视掉下一句，
+         ### 注释掉这一行 let url = "http://chegi.xyz:8080"//因为80已经被nginx占用   
     2.再新建一个文件夹，用于放置服务器：
      step3: git clone https://github.com/qumuchegi/cg2.git
      step4: 将项目中的 bin 的www文件里的这一行端口改为3001，与前面step3中的操作对应：
-         ###var port = normalizePort(8080);//记得部署到腾讯云服务器上要改为8080
+         ### var port = normalizePort(8080);//记得部署到腾讯云服务器上要改为8080
     3.开始同时运行前后端项目：
      step5: 在前端react app和后台服务器运行中都运行 npm start 即可
     
