@@ -1,44 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+ ‘小跳蚤’React APP
+ #功能：注册/登录/浏览跳蚤市场二手货/浏览其他用户在寻求什么样的二手货可以自己提供/发布自己要出手的二手货/发布自己需要什么样的二手货
+ ##技术栈相关：
+ ###
+    1.React.js 整体程序框架;
+    2.React-router 前端页面路由;
+    3.axios API 请求；
+    4.antd-mobile react UI框架；
+ ##后台服务：基于node.js + express + mongodb 的服务器（https://github.com/qumuchegi/cg2）提供API响应，nginx 用于放置react app静态页面；
+ 
+ ##开发工具：
+    1.create-react-app脚手架，初始化整个react app框架；
+    2.通过 npm install 下载各个依赖包，如axios,react-router-dom,questring等；
+    3.antd-mobile 官方网站用于查找各种UI组件（https://mobile.ant.design/index-cn）
+ ##开发：
+    1.下载改项目到事先创建好的本地文件夹，并且下载依赖包，并且将项目中的api.js文件里的第5行注释掉，第4行取消注释：
+     step1: git clone https://github.com/qumuchegi/xiaotiaozaoapp.git 
+     step2: npm install
+     step3: 
+         ###取消这一行的注释 //let url = "http://localhost:3001" //本地开发是用这一句，对应服务器监听端口改为3001，同时注视掉下一句，
+         ###注释掉这一行 let url = "http://chegi.xyz:8080"//因为80已经被nginx占用   
+    2.再新建一个文件夹，用于放置服务器：
+     step3: git clone https://github.com/qumuchegi/cg2.git
+     step4: 将项目中的 bin 的www文件里的这一行端口改为3001，与前面step3中的操作对应：
+         ###var port = normalizePort(8080);//记得部署到腾讯云服务器上要改为8080
+    3.开始同时运行前后端项目：
+     step5: 在前端react app和后台服务器运行中都运行 npm start 即可
+    
+ 
+ 
