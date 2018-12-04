@@ -46,7 +46,7 @@ export default class Publish extends Component {
             let res = await api.post('/goodspub',postObj)
             if(res.code===0){
                 Toast.success('发布成功')
-                window.setTimeout(window.location.reload(),1000)
+                //window.setTimeout(window.location.reload(),1000)//手机端有问题
                 //this.state.getHotMyhomepage()
             }else{
                 Toast.info('发布失败')
@@ -67,7 +67,7 @@ export default class Publish extends Component {
             let res = await api.post('/needspub',postObj)
             if(res.code===0){
                 Toast.info('发布成功！')
-                window.setTimeout(window.location.reload(),1000)
+                //window.setTimeout(window.location.reload(),1000)
             }else{
                 Toast.info('发布失败')
             }
