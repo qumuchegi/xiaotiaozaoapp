@@ -1,18 +1,26 @@
  ‘小跳蚤’React APP
- #功能#：注册/登录/浏览跳蚤市场二手货/浏览其他用户在寻求什么样的二手货可以自己提供/发布自己要出手的二手货/发布自己需要什么样的二手货
+ #功能#：
+ 
+    注册/登录/浏览跳蚤市场二手货/浏览其他用户在寻求什么样的二手货可以自己提供/发布自己要出手的二手货/发布自己需要什么样的二手货
+    
  ##技术栈相关##：
 
     1.React.js 整体程序框架;
     2.React-router 前端页面路由;
     3.axios API 请求；
     4.antd-mobile react UI框架；
+    
  ##后台服务##：基于node.js + express + mongodb 的服务器（https://github.com/qumuchegi/cg2）提供API响应，nginx 用于放置react app静态页面；
  
  ##开发工具##：
+ 
     1.create-react-app脚手架，初始化整个react app框架；
     2.通过 npm install 下载各个依赖包，如axios,react-router-dom,questring等；
     3.antd-mobile 官方网站用于查找各种UI组件（https://mobile.ant.design/index-cn）
+    
  ##开发##：
+ 
+ 
     1.下载改项目到事先创建好的本地文件夹，并且下载依赖包，并且将项目中的api.js文件里的第5行注释掉，第4行取消注释：
      step1: git clone https://github.com/qumuchegi/xiaotiaozaoapp.git 
      step2: npm install
