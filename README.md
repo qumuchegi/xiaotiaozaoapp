@@ -48,7 +48,7 @@
 
    #####    1. 安装node.js 和mongoDB
    由于我买的服务器是腾讯云的CentOS 系统的，所以在安装软件时候用 yum 来安装：`yum install *******`<br>
-   安装好 node.js ,就安装 `mongoDB` ,安装这个mongopDB 是花费我时间最多的,因为它的配置很坑！！搜了网上很多安装mongoDB的教程资料，这个是最靠谱的<br>
+   安装好 node.js ,就安装 `mongoDB` ,安装这个mongoDB 是花费我时间最多的,因为它的配置很坑！！搜了网上很多安装mongoDB的教程资料，这个是最靠谱的<br>
    [安装mongoDB](https://www.cnblogs.com/flying1819/articles/9035408.html)<br>
    接下来就是安装 `Nginx` . 如果只是为了运行后端的 express 程序，那么有前面的Node.js 和 MongoDB 就可以了，也就是前端运行在本地，而后端在云服务器里运行。为了把前端写好的 React app 打包后放到云服务器上，我在云服务器上安装了 Nginx 。 centos7 安装 Nginx 的教程：<br>
    [安装 Nginx ](https://blog.csdn.net/default7/article/details/56278658)<br>
