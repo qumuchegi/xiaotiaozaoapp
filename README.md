@@ -12,7 +12,7 @@
     4.antd-mobile react UI框架；
     
  ### 后台服务：
-  基于node.js + express + mongodb 的 [服务器](https://github.com/qumuchegi/cg2)提供API响应，nginx 用于放置react app静态页面；
+  基于node.js + express + mongodb 的 [服务器](https://github.com/qumuchegi/cg2)提供API响应，nginx 用于放置react app静态页面和转发API请求给express
  ### 开发工具
   1.create-react-app脚手架，初始化整个react app框架；
   2.通过 npm install 下载各个依赖包，如axios,react-router-dom,questring等；
