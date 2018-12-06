@@ -19,19 +19,16 @@ export default class Publish extends Component {
             buyprice:'',
             buydiscription:'',
             myuser:{},
-            //getMyhomepage:{}
+            getMyhomepage:''
         }
     }
     componentDidMount(){
         let myuser = this.props.myuser;
-        //let getHotMyhomepage = this.props.getHotMyhomepage;
-        //this.setState({getHotMyhomepage})
-        console.log('pubmy',myuser);
-        this.setState({myuser})
+        let getHotMyhomepage = this.props.getHotMyhomepage;
+        this.setState({myuser,getHotMyhomepage})
     }
     onSGChange(e){
         let selectedDiv = e.nativeEvent.selectedSegmentIndex===0 ? 'sell' : 'buy';
-        console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
         this.setState({selectedDiv})
     }
     async pubSell(){
@@ -46,8 +43,7 @@ export default class Publish extends Component {
             let res = await api.post('/goodspub',postObj)
             if(res.code===0){
                 Toast.success('发布成功')
-                //window.setTimeout(window.location.reload(),1000)//手机端有问题
-                //this.state.getHotMyhomepage()
+                this.state.getHotMyhomepage(this.state.myuser.name,this.state.myuser.password)
             }else{
                 Toast.info('发布失败')
             }
@@ -67,7 +63,7 @@ export default class Publish extends Component {
             let res = await api.post('/needspub',postObj)
             if(res.code===0){
                 Toast.info('发布成功！')
-                //window.setTimeout(window.location.reload(),1000)
+                this.state.getHotMyhomepage(this.state.myuser.name,this.state.myuser.password)
             }else{
                 Toast.info('发布失败')
             }

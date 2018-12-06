@@ -5,7 +5,8 @@ import Shouye from './Shouye'
 import My from './My'
 import api from '../../api'
 import '../../css/homepage.css'
- 
+import {getTimeFrom_MongoDB_id} from './Shouye'
+
 export default class Homepage extends Component {
     constructor(props){
         super(props)
@@ -16,27 +17,55 @@ export default class Homepage extends Component {
             selectedTab :'sy',
             mygood:[],
             myneed:[],
-            selectedDiv : 'sell'
+            selectedDiv : 'sell',
+            newPubGoods_Num:0,
+            newPubNeeds_Num:0
         }
+        this.getHotMyhomepage=this.getHotMyhomepage.bind(this)
     }
     componentDidMount(){
         let user = this.props.match.params.user;
         let password = this.props.location.search.substr(1);
         this.setState({name:user,password})
-        console.log(user,password)
-        this.getMyhomepage(user,password)
+        this.getMyhomepage(user,password);
+    }
+    isTimeNew(i){
+        let time=getTimeFrom_MongoDB_id(i).split('-');
+        let [y,m,d] = time
+        let now = new Date();
+        let Y = now.getFullYear();
+        let M = now.getMonth();
+        let D = now.getDate();
+        let isnew =(
+            Y > y ? ( M > m ? false : (12-m)>1 ? false : ( 31-d+(M-1)*31+D )>1 ? false : true)
+            : M > m ? (31-d+(M -1)*31+D)>1 ? false : true
+            : D-d >1 ? false : true
+        )
+        return isnew
     }
     async getMyhomepage(user,password){
         let res = await api.post('/login',{name:user,password});
-        console.log('res',res.data);
+        let my = res.data
+        this.setState({mygood:my.good,myneed:my.need,myuser:my.user,phone:my.user.phone,name:user,password:password})
+         this.state.mygood.forEach(i=>{
+            if(this.isTimeNew(i)){
+                this.setState({newPub_Num:++this.state.newPubGoods_Num}) 
+            }
+        })
+        this.state.myneed.forEach(i=>{
+            if(this.isTimeNew(i)){
+                this.setState({newPub_Num:++this.state.newPubNeeds_Num}) 
+            }
+        })
+     }
+     async getHotMyhomepage(user,password){
+        let res = await api.post('/login',{name:user,password});
         let my = res.data
         this.setState({mygood:my.good,myneed:my.need,myuser:my.user,phone:my.user.phone})
-        console.log('mygood',this.state.mygood)
-    }
+     }
     onSGChange(e){
         let selectedDiv = e.nativeEvent.selectedSegmentIndex===0 ? 'sell' : 'buy';
-        console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
-        this.setState({selectedDiv})
+         this.setState({selectedDiv})
     }
   
     render(){
@@ -50,15 +79,17 @@ export default class Homepage extends Component {
                                 needs={this.state.myneed} 
                                 selectedDiv={this.state.selectedDiv} 
                                 onSGChange={(e)=>this.onSGChange(e)}//子组件 Shouye 用父组件的方法
+                                isTimeNew={this.isTimeNew}
                         />
                         :
                     this.state.selectedTab==='fb'?
-                        <Publish {...this.state} />
+                        <Publish {...this.state} getHotMyhomepage={this.getHotMyhomepage}/>
                         :
                     <My name={this.state.name} 
                         phone={this.state.phone} 
                         mygood={this.state.mygood} 
                         myneed={this.state.myneed}
+                        isTimeNew={this.isTimeNew}
                     />
                }
                 
@@ -83,7 +114,7 @@ export default class Homepage extends Component {
                       background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
                     />}
                     selected={this.state.selectedTab === 'sy'}
-                    badge={1}
+                    badge={this.state.newPubGoods_Num+this.state.newPubNeeds_Num}
                     onPress={() => {
                      this.setState({
                          selectedTab: 'sy'
@@ -123,7 +154,6 @@ s                   onPress={() => {
                         />
                       }
                     selected={this.state.selectedTab==='wd'}
-                    badge={1}
                     onPress={() => {
                     this.setState({
                         selectedTab: 'wd',

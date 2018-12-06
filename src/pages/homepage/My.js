@@ -14,19 +14,17 @@ export default class My extends Component {
         }
     }
     componentDidMount(){
-        let {name,phone,mygood,myneed } = this.props;
-        console.log(name,phone,mygood,myneed )
+        let {name,phone,mygood,myneed,isTimeNew } = this.props;
         let myowngood=mygood.filter(i=>i.owner.name===name)
         let myownneed=myneed.filter(i=>i.owner.name===name)
         this.setState(
             {
-                name,phone,myowngood,myownneed 
+                name,phone,myowngood,myownneed ,isTimeNew
             }
         )
     }
     onSGChange(e){
         let selectedDiv = e.nativeEvent.selectedSegmentIndex===0 ? 'sell' : 'buy';
-        console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
         this.setState({selectedDiv})
     }
     render(){
@@ -57,9 +55,9 @@ export default class My extends Component {
                     <div>
                         {
                             this.state.selectedDiv==='sell' ?
-                               <SellList goods={this.state.myowngood} id='addbottom'/>
+                               <SellList goods={this.state.myowngood} isTimeNew={this.state.isTimeNew} />
                             :
-                               <BuyList needs={this.state.myownneed} id='addbottom'/>
+                               <BuyList needs={this.state.myownneed}  isTimeNew={this.state.isTimeNew}/>
                         }
                     </div>
                     <div style={{fontSize:'220%',textAlign:'center',paddingTop:'4%',color:'rgb(211, 162, 102)'}}>小跳蚤</div>

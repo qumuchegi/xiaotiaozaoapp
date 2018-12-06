@@ -26,3 +26,8 @@
 #addbottom{
     margin-bottom: 30%
 }
+.new{
+    float: right;
+    color: brown;
+    margin-right: 10%
+}

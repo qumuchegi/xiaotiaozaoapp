@@ -1,8 +1,8 @@
 import React from 'react'
 import { SegmentedControl,WingBlank, Accordion, List} from 'antd-mobile'
 import '../../css/shouye.css'
-
- const Shouye=({goods,needs,selectedDiv,onSGChange})=>(
+ 
+ const Shouye=({goods,needs,selectedDiv,onSGChange,isTimeNew})=>(
             <div>
                 <WingBlank size="lg">
                     <SegmentedControl 
@@ -13,23 +13,31 @@ import '../../css/shouye.css'
                 </WingBlank>
                 {
                      selectedDiv==='sell'?
-                     <SellList goods={goods}/>
+                     <SellList goods={goods} isTimeNew={isTimeNew}/>
                     :
-                     <BuyList needs={needs}/>
+                     <BuyList needs={needs} isTimeNew={isTimeNew}/>
                 }
                 <div style={{fontSize:'220%',textAlign:'center',paddingTop:'4%',color:'rgb(211, 162, 102)'}}>小跳蚤</div>
             </div>
         
 )
 export default Shouye;
-export const SellList=({goods})=>{
+export const SellList=({goods,isTimeNew})=>{
     
     return (
         goods ?
         goods.map((item,i)=>
         <div key={i}>
             <Accordion  className="my-accordion" >
-                <Accordion.Panel header={<span className='title'>{item.name}</span>} key={i}>
+                <Accordion.Panel header={
+                    <div>
+                      <span className='title'>{item.name}</span> 
+                      {
+                          isTimeNew(item) ?  <span className='new'>新</span> : null
+                      }
+                     
+                    </div>
+                    } key={i}>
                     <List className="my-list">
                     <List.Item>
                        <span className='key'>发布人</span> 
@@ -60,13 +68,21 @@ export const SellList=({goods})=>{
     )
 }
      
-export const BuyList=({needs})=>{
+export const BuyList=({needs,isTimeNew})=>{
     return (
         needs ? 
         needs.map((item,i)=>
         <div key={i}>
         <Accordion   className="my-accordion" >
-            <Accordion.Panel header={<span className='title'>{item.name}</span>} key={i}>
+            <Accordion.Panel header={
+                <div>
+                <span className='title'>{item.name}</span> 
+                {
+                    isTimeNew(item) ?  <span className='new'>新</span> : null
+                }
+               
+              </div>
+             } key={i}>
                 <List className="my-list">
                 <List.Item>
                    <span className='key'>发布人</span> 

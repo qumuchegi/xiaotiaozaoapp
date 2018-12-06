@@ -17,7 +17,6 @@ class Login extends Component {
     async login(){
         if(this.state.name && this.state.password){
             let res = await api.post('/login',{name:this.state.name,password:this.state.password})
-            console.log('login',res.data)
             if(res.code === 0){//登录成功
                 this.props.history.push(`/homepage/${this.state.name}?${this.state.password}`)
             }else if(res.code === 1){//登录失败,失败原因是还没有注册用户名
