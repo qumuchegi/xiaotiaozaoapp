@@ -11,7 +11,6 @@ export default class My extends Component {
             myowngood:'',
             myownneed:'',
             selectedDiv:'sell',
-            
         }
     }
     componentDidMount(){
@@ -49,9 +48,8 @@ export default class My extends Component {
                 <WingBlank>
                      <SegmentedControl 
                         id="SegmentedControl"
-                        values={['我卖我不需要','我买我需要']} 
+                        values={['我出手的','我需要的']} 
                         style={{color:'rgba(213,171,112)'}}
-                        tintColor={'rgba(213,171,112)'}  
                         onChange={(e)=>this.onSGChange(e)}
                     /> 
                     </WingBlank>

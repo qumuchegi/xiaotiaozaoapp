@@ -33,15 +33,6 @@ export default class Homepage extends Component {
         this.setState({mygood:my.good,myneed:my.need,myuser:my.user,phone:my.user.phone})
         console.log('mygood',this.state.mygood)
     }
-    /*
-    async getHotMyhomepage(){
-        const that = this
-        let res = await api.post('/login',{name:that.state.name,password:that.state.password});
-        console.log('hot',res.data);
-        let my = res.data
-        that.setState({mygood:my.good,myneed:my.need,myuser:my.user,phone:my.user.phone})
-        console.log('mygood',that.state.mygood)
-    }*/
     onSGChange(e){
         let selectedDiv = e.nativeEvent.selectedSegmentIndex===0 ? 'sell' : 'buy';
         console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
@@ -58,7 +49,7 @@ export default class Homepage extends Component {
                        <Shouye goods={this.state.mygood} 
                                 needs={this.state.myneed} 
                                 selectedDiv={this.state.selectedDiv} 
-                                onSGChange={(e)=>this.onSGChange(e)}//子组建用父组件的方法
+                                onSGChange={(e)=>this.onSGChange(e)}//子组件 Shouye 用父组件的方法
                         />
                         :
                     this.state.selectedTab==='fb'?
@@ -72,7 +63,7 @@ export default class Homepage extends Component {
                }
                 
                 <div id="tabbar" style={{position: 'fixed', bottom:0 ,width:'100%',zIndex:'23'}}>
-                <TabBar tabBarPosition='bottom' barTintColor='rgba(213,171,112)' >
+                <TabBar tabBarPosition='bottom' >
                  <TabBarItem
                    title='首页'
                    key='首页'
@@ -94,10 +85,8 @@ export default class Homepage extends Component {
                     selected={this.state.selectedTab === 'sy'}
                     badge={1}
                     onPress={() => {
-                        console.log('selectedIndex',this.state.selectedDiv)
-                    this.setState({
-                       
-                        selectedTab: 'sy'
+                     this.setState({
+                         selectedTab: 'sy'
                     });
                     }}
                     data-seed="logId"
@@ -108,9 +97,7 @@ export default class Homepage extends Component {
                     icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
                     selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
                     selected={this.state.selectedTab ==='fb'}
-                    badge={1}
-                    onPress={() => {
-                        console.log('selectedIndex',this.state.selectedDiv)
+s                   onPress={() => {
                     this.setState({
                         selectedTab: 'fb',
                         selectedDiv: 'sell'
@@ -138,7 +125,6 @@ export default class Homepage extends Component {
                     selected={this.state.selectedTab==='wd'}
                     badge={1}
                     onPress={() => {
-                        console.log('selectedIndex',this.state.selectedDiv)
                     this.setState({
                         selectedTab: 'wd',
                         selectedDiv: 'sell'

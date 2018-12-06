@@ -84,7 +84,6 @@ export default class Publish extends Component {
                     id="SegmentedControl"
                         values={['我要卖','我要买']} 
                         style={{color:'rgba(213,171,112)'}}
-                        tintColor={'rgba(213,171,112)'}  
                         onChange={(e)=>this.onSGChange(e)}/> 
                 </WingBlank>
                 {
@@ -117,9 +116,6 @@ export default class Publish extends Component {
                        <Button type="ghost" size="small" onClick={()=>this.pubBuy()} className='button'>发布</Button>
                     </div>
                 }
-                
-                
-
             </div>
         )
     }

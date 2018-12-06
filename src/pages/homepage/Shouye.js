@@ -9,7 +9,6 @@ import '../../css/shouye.css'
                     id="SegmentedControl"
                     values={['找找宝贝','看看需求']} 
                     style={{color:'rgba(213,171,112)'}}
-                    tintColor={'rgba(213,171,112)'}  
                     onChange={e=>onSGChange(e)}/> 
                 </WingBlank>
                 {
@@ -29,7 +28,7 @@ export const SellList=({goods})=>{
         goods ?
         goods.map((item,i)=>
         <div key={i}>
-            <Accordion defaultActiveKey="0" className="my-accordion" >
+            <Accordion  className="my-accordion" >
                 <Accordion.Panel header={<span className='title'>{item.name}</span>} key={i}>
                     <List className="my-list">
                     <List.Item>
@@ -48,6 +47,10 @@ export const SellList=({goods})=>{
                         <span className='key'>描述</span>
                         <span className='value'>{item.discription}</span>
                     </List.Item>
+                    <List.Item>
+                        <span className='key'>发布时间</span>
+                        <span className='value'>{getTimeFrom_MongoDB_id(item)}</span>
+                    </List.Item>
                     </List>
                 </Accordion.Panel>
             </Accordion>
@@ -62,7 +65,7 @@ export const BuyList=({needs})=>{
         needs ? 
         needs.map((item,i)=>
         <div key={i}>
-        <Accordion defaultActiveKey="0" className="my-accordion" >
+        <Accordion   className="my-accordion" >
             <Accordion.Panel header={<span className='title'>{item.name}</span>} key={i}>
                 <List className="my-list">
                 <List.Item>
@@ -81,6 +84,10 @@ export const BuyList=({needs})=>{
                     <span className='key'>描述</span>
                     <span className='value'>{item.discription}</span>
                 </List.Item>
+                <List.Item>
+                        <span className='key'>发布时间</span>
+                        <span className='value'>{getTimeFrom_MongoDB_id(item)}</span>
+                    </List.Item>
                 </List>
             </Accordion.Panel>
         </Accordion>
@@ -90,7 +97,11 @@ export const BuyList=({needs})=>{
     )
 }
 
-   
+export const getTimeFrom_MongoDB_id=item=>{//从mongodb 的_id 得到时间戳
+    var timestamp = item._id.toString().substring( 0, 8 );
+    var date = new Date( parseInt( timestamp, 16 ) * 1000 );
+    return   date.toJSON().substr(0,10)
+}
 
 
 /*
