@@ -47,14 +47,17 @@ export default class Homepage extends Component {
         let res = await api.post('/login',{name:user,password});
         let my = res.data
         this.setState({mygood:my.good,myneed:my.need,myuser:my.user,phone:my.user.phone,name:user,password:password})
-         this.state.mygood.forEach(i=>{
+        this.computeNewNum(this.state.mygood,this.state.myneed)
+      }
+     computeNewNum(good,need){
+        good.forEach(i=>{
             if(this.isTimeNew(i)){
-                this.setState({newPub_Num:++this.state.newPubGoods_Num}) 
+                this.setState({newPubGoods_Num:this.state.newPubGoods_Num+1}) 
             }
         })
-        this.state.myneed.forEach(i=>{
+        need.forEach(i=>{
             if(this.isTimeNew(i)){
-                this.setState({newPub_Num:++this.state.newPubNeeds_Num}) 
+                this.setState({newPubNeeds_Num:this.state.newPubNeeds_Num+1}) 
             }
         })
      }
@@ -62,7 +65,8 @@ export default class Homepage extends Component {
         let res = await api.post('/login',{name:user,password});
         let my = res.data
         this.setState({mygood:my.good,myneed:my.need,myuser:my.user,phone:my.user.phone})
-     }
+        this.setState({newPubGoods_Num:this.state.newPubGoods_Num+1}) 
+      }
     onSGChange(e){
         let selectedDiv = e.nativeEvent.selectedSegmentIndex===0 ? 'sell' : 'buy';
          this.setState({selectedDiv})
